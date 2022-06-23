@@ -9,9 +9,7 @@ app.use(express.json());
 app.use(morgan("tiny"));
 
 // routes
-app.get("/", (req, res) => {
-    res.send("hello world");
-})
+app.use("/api", require("./routes/auth"))
 
 // server configurations 
 const PORT = process.env.PORT || 8000;
