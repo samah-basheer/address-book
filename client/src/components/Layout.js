@@ -1,8 +1,8 @@
 import Navbar from "./Navbar"
 
-const Layout = ( {children} ) => {
+const Layout = ( { navbar = true, children} ) => {
     return <>
-        <Navbar/>
+        {navbar && <Navbar/>}
         <div className="container">{children}</div>
     </>
 }
