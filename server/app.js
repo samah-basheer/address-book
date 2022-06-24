@@ -5,12 +5,14 @@ const connectDB = require("./config/db");
 
 const app = express();
 
+const auth = require("./middlewares/auth"); 
+
 // middlewares
 app.use(express.json());
 app.use(morgan("tiny"));
 
 // routes
-app.use("/api", require("./routes/auth"))
+app.use("/api", require("./routes/auth"));
 
 // server configurations 
 const PORT = process.env.PORT || 8000;
