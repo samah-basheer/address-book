@@ -35,3 +35,12 @@ ul {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
 }
+
+.logout-btn {
+    background: rgb(223, 71, 89);
+    color: white;
+    border: 0;
+    padding: 6px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}

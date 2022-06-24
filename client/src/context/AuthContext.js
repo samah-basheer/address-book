@@ -21,7 +21,9 @@ export const AuthContextProvider = ({ children }) => {
             });
             const result = await res.json();
             if (!result.error) {
+                console.log(result)
                 localStorage.setItem('token', result.token);
+                setUser(result.user);
             } else {
                 
             }
@@ -51,7 +53,7 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
 
-    return <AuthContext.Provider value={{ loginUser, registerUser }}>
+    return <AuthContext.Provider value={{ loginUser, registerUser, user, setUser }}>
         <ToastContainer autoClose={2000} />
         {children}
     </AuthContext.Provider>
