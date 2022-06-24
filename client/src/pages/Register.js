@@ -1,11 +1,14 @@
 import './Styles.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import AuthContext from '../context/AuthContext';
+
 const Register = () => {
+    const { registerUser } = useContext(AuthContext);
     const [eyeIcon, setEyeIcon] = useState(false);
     const [eyeIconConfirm, setEyeIconConfirm] = useState(false);
 
@@ -17,7 +20,7 @@ const Register = () => {
     }
 
     const [credentials, setCredentials] = useState({
-        fname: "",
+        name: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -32,7 +35,7 @@ const Register = () => {
     const handleSubmit = event => {
         event.preventDefault();
 
-        if (!credentials.fname || !credentials.email || !credentials.password || !credentials.confirmPassword) {
+        if (!credentials.name || !credentials.email || !credentials.password || !credentials.confirmPassword) {
             toast.error("Please enter all the required fields.");
             return;
         }
@@ -41,6 +44,10 @@ const Register = () => {
             toast.error("Password do not match.");
             return;
         }
+
+        const userData = {...credentials, confirmPassword: undefined}
+
+        registerUser(userData);
     }
 
     return (
@@ -52,7 +59,7 @@ const Register = () => {
                         <span className="title">Registration</span>
                         <form onSubmit={handleSubmit}>
                             <div className="input-field">
-                                <input type="text" placeholder="Enter your full name" value={credentials.fname} onChange={handleInputChange} name="fname" id="name" required />
+                                <input type="text" placeholder="Enter your full name" value={credentials.name} onChange={handleInputChange} name="name" required />
                                 <i className="uil uil-user"></i>
                             </div>
                             <div className="input-field">
