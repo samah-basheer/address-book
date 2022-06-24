@@ -7,4 +7,4 @@ const Layout = ( {children} ) => {
     </>
 }
 
-export default Navbar;
+export default Layout;
