@@ -23,13 +23,13 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 0 20px;
+    max-height: 100%;
 }
 
 .container .form {
     width: 100%;
     padding: 30px;
     background-color: #fff;
-    transition: margin-left 0.18s ease;
 }
 
 .container .form .title {

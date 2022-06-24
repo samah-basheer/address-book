@@ -1,6 +1,14 @@
 import './Styles.css';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+    const [eyeIcon, setEyeIcon] = useState(false);
+
+    const toggleEye = () => {
+        setEyeIcon(!eyeIcon);
+    }
+
     return <div className="bd">
         <div class="container">
             <div class="form signup">
@@ -20,14 +28,14 @@ const Register = () => {
                     </div>
                     <div class="input-field">
                         <input
-                            type="password"
+                            type={eyeIcon ? 'text' : 'password'}
                             class="password"
                             id="user_password"
                             placeholder="Create a password"
                             required
                         />
                         <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"></i>
+                        <i className={eyeIcon ? 'uil uil-eye showHidePw' : 'uil uil-eye-slash showHidePw'} onClick={toggleEye}></i>
                     </div>
                     <div class="login-response" id="sign_status"></div>
                     <div class="input-field button">
@@ -36,7 +44,9 @@ const Register = () => {
                 </form>
                 <div class="login-signup">
                     <span class="text">You're a member?
-                        <a href="#" class="text login-link">Login Now</a>
+                        <Link to="/login">
+                            <a href="#" class="text login-link">Login Now</a>
+                        </Link>
                     </span>
                 </div>
             </div>
