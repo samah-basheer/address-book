@@ -2,6 +2,9 @@ import './Styles.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Register = () => {
     const [eyeIcon, setEyeIcon] = useState(false);
     const [eyeIconConfirm, setEyeIconConfirm] = useState(false);
@@ -28,64 +31,79 @@ const Register = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
+
+        if (!credentials.fname || !credentials.email || !credentials.password || !credentials.confirmPassword) {
+            toast.error("Please enter all the required fields.");
+            return;
+        }
+
+        if(credentials.password !== credentials.confirmPassword) {
+            toast.error("Password do not match.");
+            return;
+        }
     }
 
-    return <div className="bd">
-        <div class="container">
-            <div class="form signup">
-                <span class="title">Registration</span>
-                <form onSubmit={handleSubmit}>
-                    <div class="input-field">
-                        <input type="text" placeholder="Enter your full name" value={credentials.fname} onChange={handleInputChange} name="fname" id="name" required />
-                        <i class="uil uil-user"></i>
+    return (
+        <>
+            <ToastContainer autoClose={2000} />
+            <div className="bd">
+                <div className="container">
+                    <div className="form signup">
+                        <span className="title">Registration</span>
+                        <form onSubmit={handleSubmit}>
+                            <div className="input-field">
+                                <input type="text" placeholder="Enter your full name" value={credentials.fname} onChange={handleInputChange} name="fname" id="name" required />
+                                <i className="uil uil-user"></i>
+                            </div>
+                            <div className="input-field">
+                                <input type="text" placeholder="Enter your email" value={credentials.email} onChange={handleInputChange} name="email" id="user_email" required />
+                                <i className="uil uil-envelope icon"></i>
+                            </div>
+                            <div className="input-field">
+                                <input
+                                    type={eyeIcon ? 'text' : 'password'}
+                                    className="password"
+                                    id="user_password"
+                                    placeholder="Create a password"
+                                    name="password"
+                                    onChange={handleInputChange}
+                                    value={credentials.password}
+                                    required
+                                />
+                                <i className="uil uil-lock icon"></i>
+                                <i className={eyeIcon ? 'uil uil-eye showHidePw' : 'uil uil-eye-slash showHidePw'} onClick={toggleEye}></i>
+                            </div>
+                            <div className="input-field">
+                                <input
+                                    type={eyeIconConfirm ? 'text' : 'password'}
+                                    className="password"
+                                    onChange={handleInputChange}
+                                    id=""
+                                    name="confirmPassword"
+                                    value={credentials.confirmPassword}
+                                    placeholder="Confirm password"
+                                    required
+                                />
+                                <i className="uil uil-lock icon"></i>
+                                <i className={eyeIconConfirm ? 'uil uil-eye showHidePw' : 'uil uil-eye-slash showHidePw'} onClick={toggleEyeConfrim}></i>
+                            </div>
+                            <div className="login-response" id="sign_status"></div>
+                            <div className="input-field button">
+                                <input type="submit" value="Login Now" id="signup_button" />
+                            </div>
+                        </form>
+                        <div className="login-signup">
+                            <span className="text">You're a member?
+                                <Link to="/login">
+                                    <a href="#" className="text login-link">Login Now</a>
+                                </Link>
+                            </span>
+                        </div>
                     </div>
-                    <div class="input-field">
-                        <input type="text" placeholder="Enter your email" value={credentials.email} onChange={handleInputChange} name="email" id="user_email" required />
-                        <i class="uil uil-envelope icon"></i>
-                    </div>
-                    <div class="input-field">
-                        <input
-                            type={eyeIcon ? 'text' : 'password'}
-                            class="password"
-                            id="user_password"
-                            placeholder="Create a password"
-                            name="password"
-                            onChange={handleInputChange}
-                            value={credentials.password}
-                            required
-                        />
-                        <i class="uil uil-lock icon"></i>
-                        <i className={eyeIcon ? 'uil uil-eye showHidePw' : 'uil uil-eye-slash showHidePw'} onClick={toggleEye}></i>
-                    </div>
-                    <div class="input-field">
-                        <input
-                            type={eyeIconConfirm ? 'text' : 'password'}
-                            class="password"
-                            onChange={handleInputChange}
-                            id=""
-                            name="confirmPassword"
-                            value={credentials.confirmPassword}
-                            placeholder="Confirm password"
-                            required
-                        />
-                        <i class="uil uil-lock icon"></i>
-                        <i className={eyeIconConfirm ? 'uil uil-eye showHidePw' : 'uil uil-eye-slash showHidePw'} onClick={toggleEyeConfrim}></i>
-                    </div>
-                    <div class="login-response" id="sign_status"></div>
-                    <div class="input-field button">
-                        <input type="submit" value="Login Now" id="signup_button" />
-                    </div>
-                </form>
-                <div class="login-signup">
-                    <span class="text">You're a member?
-                        <Link to="/login">
-                            <a href="#" class="text login-link">Login Now</a>
-                        </Link>
-                    </span>
                 </div>
             </div>
-        </div>
-    </div>
+        </>
+    );
 }
 
 export default Register;

@@ -10,6 +10,7 @@ const auth = require("./middlewares/auth");
 // middlewares
 app.use(express.json());
 app.use(morgan("tiny"));
+app.use(require('cors')());
 
 // routes
 app.use("/api", require("./routes/auth"));
