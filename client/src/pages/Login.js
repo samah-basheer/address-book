@@ -2,11 +2,11 @@ import './Styles.css';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from '../context/AuthContext';
+import ToastContext from '../context/ToastContext';
 
 const Login = () => {
+    const { toast } = useContext(ToastContext);
     const { loginUser } = useContext(AuthContext);
     const [eyeIcon, setEyeIcon] = useState(false);
 
@@ -39,7 +39,6 @@ const Login = () => {
 
     return (
         <>
-            <ToastContainer autoClose={2000} />
             <div className="bd">
                 <div class="container">
                     <div class="form login">

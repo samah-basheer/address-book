@@ -2,12 +2,11 @@ import './Styles.css';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import AuthContext from '../context/AuthContext';
+import ToastContext from '../context/ToastContext';
 
 const Register = () => {
+    const { toast } = useContext(ToastContext);
     const { registerUser } = useContext(AuthContext);
     const [eyeIcon, setEyeIcon] = useState(false);
     const [eyeIconConfirm, setEyeIconConfirm] = useState(false);
@@ -40,19 +39,18 @@ const Register = () => {
             return;
         }
 
-        if(credentials.password !== credentials.confirmPassword) {
+        if (credentials.password !== credentials.confirmPassword) {
             toast.error("Password do not match.");
             return;
         }
 
-        const userData = {...credentials, confirmPassword: undefined}
+        const userData = { ...credentials, confirmPassword: undefined }
 
         registerUser(userData);
     }
 
     return (
         <>
-            <ToastContainer autoClose={2000} />
             <div className="bd">
                 <div className="container">
                     <div className="form signup">
