@@ -23,9 +23,7 @@ export const AuthContextProvider = ({ children }) => {
             if (!result.error) {
                 localStorage.setItem('token', result.token);
             } else {
-                setError(result.error);
-                toast.error(error);
-                setError(null);
+                
             }
         } catch (err) {
             console.log(err);
@@ -46,9 +44,7 @@ export const AuthContextProvider = ({ children }) => {
             if (!result.error) {
                 console.log(result)
             } else {
-                setError(result.error);
-                toast.error(error);
-                setError(null);
+                
             }
         } catch (err) {
             console.log(err);
