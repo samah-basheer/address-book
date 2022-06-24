@@ -13,21 +13,34 @@ const Register = () => {
         setEyeIconConfirm(!eyeIconConfirm);
     }
 
+    const [credentials, setCredentials] = useState({
+        fname: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+    })
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        setCredentials({ ...credentials, [name]: value });
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+    }
+
     return <div className="bd">
         <div class="container">
             <div class="form signup">
                 <span class="title">Registration</span>
-                <form action="#" method="post">
+                <form onSubmit={handleSubmit}>
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your first name" id="first_name" required />
+                        <input type="text" placeholder="Enter your full name" value={credentials.fname} onChange={handleInputChange} name="fname" id="name" required />
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your last name" id="last_name" required />
-                        <i class="uil uil-user"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" placeholder="Enter your email" id="user_email" required />
+                        <input type="text" placeholder="Enter your email" value={credentials.email} onChange={handleInputChange} name="email" id="user_email" required />
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
@@ -36,6 +49,9 @@ const Register = () => {
                             class="password"
                             id="user_password"
                             placeholder="Create a password"
+                            name="password"
+                            onChange={handleInputChange}
+                            value={credentials.password}
                             required
                         />
                         <i class="uil uil-lock icon"></i>
@@ -45,7 +61,10 @@ const Register = () => {
                         <input
                             type={eyeIconConfirm ? 'text' : 'password'}
                             class="password"
+                            onChange={handleInputChange}
                             id=""
+                            name="confirmPassword"
+                            value={credentials.confirmPassword}
                             placeholder="Confirm password"
                             required
                         />
@@ -54,7 +73,7 @@ const Register = () => {
                     </div>
                     <div class="login-response" id="sign_status"></div>
                     <div class="input-field button">
-                        <input type="button" value="Login Now" id="signup_button" />
+                        <input type="submit" value="Login Now" id="signup_button" />
                     </div>
                 </form>
                 <div class="login-signup">
