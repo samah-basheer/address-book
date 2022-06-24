@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
     const [eyeIcon, setEyeIcon] = useState(false);
+    const [eyeIconConfirm, setEyeIconConfirm] = useState(false);
 
     const toggleEye = () => {
         setEyeIcon(!eyeIcon);
+    }
+    const toggleEyeConfrim = () => {
+        setEyeIconConfirm(!eyeIconConfirm);
     }
 
     return <div className="bd">
@@ -36,6 +40,17 @@ const Register = () => {
                         />
                         <i class="uil uil-lock icon"></i>
                         <i className={eyeIcon ? 'uil uil-eye showHidePw' : 'uil uil-eye-slash showHidePw'} onClick={toggleEye}></i>
+                    </div>
+                    <div class="input-field">
+                        <input
+                            type={eyeIconConfirm ? 'text' : 'password'}
+                            class="password"
+                            id=""
+                            placeholder="Confirm password"
+                            required
+                        />
+                        <i class="uil uil-lock icon"></i>
+                        <i className={eyeIconConfirm ? 'uil uil-eye showHidePw' : 'uil uil-eye-slash showHidePw'} onClick={toggleEyeConfrim}></i>
                     </div>
                     <div class="login-response" id="sign_status"></div>
                     <div class="input-field button">

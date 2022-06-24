@@ -9,6 +9,10 @@ const Login = () => {
         setEyeIcon(!eyeIcon);
     }
 
+    const [credentials, setCredentials] = useState({
+        
+    })
+
     return <div className="bd">
         <div class="container">
             <div class="form login">
