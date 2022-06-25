@@ -129,3 +129,16 @@
         text-align: center;
     }
 }
+
+.total {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-flex {
+    display: flex;
+}
+
+.form-flex div {
+    width: 100%;
+}
