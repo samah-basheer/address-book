@@ -28,6 +28,9 @@ const CreateContact = () => {
                         <label>Phone of Person</label>
                         <input type='text' id='phoneInput' name='phone' placeholder='Enter phone' required />
                     </div>
+                    <div className='submit-btn'>
+                        <input type='submit' value='Add Contact' className='btn' />
+                    </div>
                 </form>
             </div>
         </div>
