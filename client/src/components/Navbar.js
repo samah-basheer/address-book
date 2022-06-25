@@ -20,11 +20,16 @@ const Navbar = ({ title = "CMS" }) => {
                         user ?
                             <>
                                 <li className="nav-item">
+                                    <Link to="/create">
+                                        <a className="nav-link" href="#">Create</a>
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
                                     <button className="logout-btn" onClick={() => {
                                         setUser(null);
                                         localStorage.clear();
                                         toast.success("Logged out.")
-                                        navigate("/", {replace: true})
+                                        navigate("/", { replace: true })
                                     }}>Logout</button>
                                 </li>
                             </> :

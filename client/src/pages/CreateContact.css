@@ -1,0 +1,15 @@
+.contact-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    border-bottom: 1px solid gray;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.form-group input {
+    border: none;
+    height: 35px;
+}

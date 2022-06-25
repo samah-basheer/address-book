@@ -1,0 +1,26 @@
+.user-name {
+    text-transform: capitalize;
+}
+
+.wrapper {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.spacer {
+    height: 30px;
+}
+
+.btn {
+    background: #0FA5F5;
+    color: white;
+    border: 0;
+    padding: 6px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
