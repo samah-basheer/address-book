@@ -14,7 +14,7 @@ const Home = () => {
             <h2>Welcome <span className='user-name'>{user ? user.name : null }</span></h2>
             <div className='spacer'></div>
             <div>
-                <a className='btn' href=''>Add Contacts</a>
+                <a className='btn' href='/create'>Add Contacts</a>
             </div>
         </div>
     </>);
