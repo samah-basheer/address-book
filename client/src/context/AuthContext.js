@@ -8,7 +8,7 @@ import ToastContext from "./ToastContext";
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-    const {toast} = useContext(ToastContext);
+    const { toast } = useContext(ToastContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [user, setUser] = useState(null);
@@ -20,6 +20,9 @@ export const AuthContextProvider = ({ children }) => {
 
     // check if the user is logged in
     const checkUserLoggedIn = async () => {
+        if (!localStorage.getItem('token')) {
+            navigate("/login", { replace: true })
+        }
         try {
             const res = await fetch(`http://localhost:8000/api/me`, {
                 method: "GET",
@@ -85,7 +88,7 @@ export const AuthContextProvider = ({ children }) => {
             const result = await res.json();
             if (!result.error) {
                 toast.success("Successfully registered");
-                navigate("/login", {replace: true})
+                navigate("/login", { replace: true })
             } else {
                 toast.error(result.error)
             }
