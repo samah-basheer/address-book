@@ -60,9 +60,10 @@ export const AuthContextProvider = ({ children }) => {
             });
             const result = await res.json();
             if (!result.error) {
-                console.log(result)
                 localStorage.setItem('token', result.token);
                 setUser(result.user);
+                toast.success(`Successfully Logged in ${result.user.name}`)
+                navigate("/", { replace: true });
             } else {
                 toast.error(result.error);
             }
@@ -83,7 +84,8 @@ export const AuthContextProvider = ({ children }) => {
             });
             const result = await res.json();
             if (!result.error) {
-                console.log(result)
+                toast.success("Successfully registered");
+                navigate("/login", {replace: true})
             } else {
                 toast.error(result.error)
             }

@@ -1,11 +1,14 @@
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 
 import AuthContext from '../context/AuthContext';
+import ToastContext from '../context/ToastContext';
 
 const Navbar = ({ title = "CMS" }) => {
     const { user, setUser } = useContext(AuthContext);
+    const { toast } = useContext(ToastContext);
+    const navigate = useNavigate();
     return (<nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
             <Link to="/">
@@ -20,6 +23,8 @@ const Navbar = ({ title = "CMS" }) => {
                                     <button className="logout-btn" onClick={() => {
                                         setUser(null);
                                         localStorage.clear();
+                                        toast.success("Logged out.")
+                                        navigate("/", {replace: true})
                                     }}>Logout</button>
                                 </li>
                             </> :
