@@ -20,8 +20,13 @@ const Navbar = ({ title = "CMS" }) => {
                         user ?
                             <>
                                 <li className="nav-item">
+                                    <Link to="/mycontacts">
+                                        <a className="nav-link" href="#">All Contacts </a>
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
                                     <Link to="/create">
-                                        <a className="nav-link" href="#">Create</a>
+                                        <a className="nav-link" href="#">Create </a>
                                     </Link>
                                 </li>
                                 <li className="nav-item">
