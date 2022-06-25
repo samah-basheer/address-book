@@ -31,30 +31,38 @@ const AllContact = () => {
         <div className='wrapper'>
             <h2>Your Contacts</h2>
             <div className='spacer'></div>
-            <div className='table-wrapper'>
-                <table className="fl-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            contacts.map(contact => (
-                                <tr key={contact._id}>
-                                    <td>{contact.name}</td>
-                                    <td>{contact.address}</td>
-                                    <td>{contact.email}</td>
-                                    <td>{contact.phone}</td>
+
+            {
+                contacts.length === 0 ? (
+                    <h5>No contacts created yet.</h5>
+                ) : (
+                    <div className='table-wrapper'>
+                        <table className="fl-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
                                 </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
-            </div>
+                            </thead>
+                            <tbody>
+                                {
+                                    contacts.map(contact => (
+                                        <tr key={contact._id}>
+                                            <td>{contact.name}</td>
+                                            <td>{contact.address}</td>
+                                            <td>{contact.email}</td>
+                                            <td>{contact.phone}</td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                )
+            }
+
         </div>
     </>);
 };
