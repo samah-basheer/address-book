@@ -62,6 +62,9 @@ const CreateContact = () => {
                         <label>Phone of Person</label>
                         <input type='text' id='phoneInput' name='phone' placeholder='Enter phone' value={userDetails.phone} onChange={handleChange} required />
                     </div>
+                    <div className='form-group no-border'>
+                        <label>Location of Person</label>
+                    </div>
                     <div className='submit-btn'>
                         <input type='submit' value='Add Contact' className='btn' />
                     </div>
